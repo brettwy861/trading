@@ -4,6 +4,7 @@
 Created on Sat Jul 21 17:17:01 2018
 
 @author: brettwang
+Retrieving exchanges listed on coinmarketcap and save the json 
 """
 
 import re
@@ -50,6 +51,6 @@ for item in newList:
     newdict['blog'] = re.findall(blog_re, str(html))
     exchangeJson.append(newdict)
 
-with open('exchange.json', 'w') as file3:
-    json.dump(exchangeJson, file3, indent=2)
-    file3.close()
+with open('exchange.json', 'w') as file:
+    json.dump(exchangeJson, file, indent=2)
+    file.close()
