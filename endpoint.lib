@@ -1,0 +1,805 @@
+# API VERSIONS (Type A)
+APIVA=('v1.0'  'v1.1'  'v1.2'  'v1.3'  'v1.4'  'v1.5'  'v1.6'  'v1.7'  'v1.8'  'v1.9'  'v2.0'  'v2.1'  'v2.2'  'v2.3'  'v2.4'  'v2.5'  'v2.6'  'v2.7'  'v2.8'  'v2.9' 'v3.0')
+
+#------------------------#
+#      API VERSIONS      #
+#------------------------#
+#   v1.0 = ${APIVA[0]}   #
+#   v1.1 = ${APIVA[1]}   #
+#   v1.2 = ${APIVA[2]}   #
+#   v1.3 = ${APIVA[3]}   #
+#   v1.4 = ${APIVA[4]}   #
+#   v1.5 = ${APIVA[5]}   #
+#   v1.6 = ${APIVA[6]}   #
+#   v1.7 = ${APIVA[7]}   #
+#   v1.8 = ${APIVA[8]}   #
+#   v1.9 = ${APIVA[9]}   #
+#   v2.0 = ${APIVA[10]}  #
+#   v2.1 = ${APIVA[11]}  #
+#   v2.2 = ${APIVA[12]}  #
+#   v2.3 = ${APIVA[13]}  #
+#   v2.4 = ${APIVA[14]}  #
+#   v2.5 = ${APIVA[15]}  #
+#   v2.6 = ${APIVA[16]}  #
+#   v2.7 = ${APIVA[17]}  #
+#   v2.8 = ${APIVA[18]}  #
+#   v2.9 = ${APIVA[19]}  #
+#   v3.0 = ${APIVA[20]}  #
+#------------------------#
+
+# API VERSIONS (Type B)
+APIVB=('1.0'  '1.1'  '1.2'  '1.3'  '1.4'  '1.5'  '1.6'  '1.7'  '1.8'  '1.9'  '2.0'  '2.1'  '2.2'  '2.3'  '2.4'  '2.5'  '2.6'  '2.7'  '2.8'  '2.9' '3.0')
+
+#-----------------------#
+#      API VERSIONS     #
+#-----------------------#
+#   1.0 = ${APIVB[0]}   #
+#   1.1 = ${APIVB[1]}   #
+#   1.2 = ${APIVB[2]}   #
+#   1.3 = ${APIVB[3]}   #
+#   1.4 = ${APIVB[4]}   #
+#   1.5 = ${APIVB[5]}   #
+#   1.6 = ${APIVB[6]}   #
+#   1.7 = ${APIVB[7]}   #
+#   1.8 = ${APIVB[8]}   #
+#   1.9 = ${APIVB[9]}   #
+#   2.0 = ${APIVB[10]}  #
+#   2.1 = ${APIVB[11]}  #
+#   2.2 = ${APIVB[12]}  #
+#   2.3 = ${APIVB[13]}  #
+#   2.4 = ${APIVB[14]}  #
+#   2.5 = ${APIVB[15]}  #
+#   2.6 = ${APIVB[16]}  #
+#   2.7 = ${APIVB[17]}  #
+#   2.8 = ${APIVB[18]}  #
+#   2.9 = ${APIVB[19]}  #
+#   3.0 = ${APIVB[20]}  #
+#-----------------------#
+
+# API request headers
+HD=('Connection: keep-alive' 'accept: application/json' 'Cache-Control: max-age=0')
+
+
+################################################################################
+# BITTREX EXCHANGE VARIABLES                                                   #
+# Exchange URL: https://bittrex.com                                            #
+# API Docs: https://bittrex.com/home/api                                       #
+################################################################################
+
+A=('bittrex.com/api')
+AA=('/public')
+AAA=('/getmarketsummaries' '/getcurrencies' '/getmarkets')
+AAB=('/getticker' '/getmarketsummary' '/getmarkethistory')
+AABP1=('market=')
+AAC=('/getorderbook')
+AACP1=('market=')
+AACP2=('type=both' 'type=buy' 'type=sell')
+AB=('/market')
+ABA=('/buylimit' '/selllimit')
+ABAP1=('apikey=')
+ABAP2=('market=')
+ABAP3=('quantity=')
+ABAP4=('rate=')
+ABB=('/cancel')
+ABBP1=('apikey=')
+ABBP2=('uuid=')
+ABC=('/getopenorders')
+ABCP1=('apikey=')
+ABCP2=('market=')
+AC=('/account')
+ACA=('/getbalances' '/getorderhistory')
+ACAP1=('apikey=')
+ACB=('/getbalance' '/getdepositaddress' '/getwithdrawalhistory' '/getdeposithistory')
+ACBP1=('apikey=')
+ACBP2=('currency=')
+ACC=('/withdraw')
+ACCP1=('apikey=')
+ACCP2=('currency=')
+ACCP3=('quantity=')
+ACCP4=('address=')
+ACD=('/getorder')
+ACDP1=('apikey=')
+ACDP2=('uuid=')
+
+################################################################################
+# HITBTC EXCHANGE VARIABLES                                                    #
+# Exchange URL: https://hitbtc.com                                             #
+# API Docs: https://api.hitbtc.com                                             #
+################################################################################
+
+B=('api.hitbtc.com/api/')
+BA=('/public')
+BAA=('/currency')
+BAAA=('/')
+BAB=('/symbol')
+BABA=('/')
+BAC=('/ticker')
+BACA=('/')
+BAD=('/trades')
+BADA=('/')
+BADAP1=('sort=DESC' 'sort=ASC')
+BADAP2=('by=')
+BADAP3=('from=')
+BADAP4=('till=')
+BADAP5=('limit=')
+BADAP6=('offset=')
+BAE=('/orderbook')
+BAEA=('/')
+BAEAP1=('limit=')
+BAF=('/candles')
+BAFA=('/')
+BAFAP1=('limit=')
+BAFAP2=('period=M1' 'period=M3' 'period=M5' 'period=M15' 'period=M30' 'period=H1' 'period=H4' 'period=D1' 'period=D7' 'period=1M')
+BB=('/trading')
+BBA=('/balance')
+BBB=('/fee')
+BBBA=('/')
+BC=('/order')
+BCP1=('symbol=')
+BCPD1=('symbol=')
+BCPO1=('symbol=')
+BCPO2=('side=sell' 'side=buy')
+BCPO3=('quantity=') 
+BCPO4=('price=')
+BCPO5=('type=limit' 'type=market' 'type=stopLimit' 'type=stopMarket') #optional
+BCPO5A=('stopPrice=') #required for stop types
+BCPO6=('timeInForce=GTC' 'timeInForce=IOC' 'timeInForce=FOK' 'timeInForce=Day' 'timeInForce=GTD') #optional
+BCPO6A = ('expireTime=') #required for GTD timeInForce
+BCPO7=('strictValidate=') #optional, ticksize and quantityIncrement check
+BCPO8=('clientOrderId=') #optional
+BCA=('/')  
+BCAP1=('wait=') #optional
+BCAPU1=('symbol=')
+BCAPU2=('side=sell' 'side=buy')
+BCAPU3=('quantity=') 
+BCAPU4=('price=')
+BCAPU5=('type=limit' 'type=market' 'type=stopLimit' 'type=stopMarket') #optional
+BCAPU5A=('stopPrice=') #required for stop types
+BCAPU6=('timeInForce=GTC' 'timeInForce=IOC' 'timeInForce=FOK' 'timeInForce=Day' 'timeInForce=GTD') #optional
+BCAPU6A = ('expireTime=') #required for GTD timeInForce
+BCAPU7=('strictValidate=') #optional, ticksize and quantityIncrement check
+BCAPU8=('clientOrderId=') #optional
+BD=('/history')
+BDA=('/order')
+BDAP1=('symbol=') #optional
+BDAP2=('clientOrderId=') #optional
+BDAP3=('from=')
+BDAP4=('till=')
+BDAP5=('limit=')
+BDAP6=('offset=')
+BDAA=('/')
+BDAAA=('/trades')
+BDAAAP1=('orderId=')
+BDB=('/trades')
+BDBP1=('symbol=') #optional
+BDBP2=('sort=DESC' 'sort=ASC') #optional
+BDBP3=('by=timestamp' 'by=id') #optional
+BDBP4=('from=')
+BDBP5=('till=')
+BDBP6=('limit=')
+BDBP7=('offset=')
+BE=('/account')
+BEA=('/balance')
+BEB=('/crypto')
+BEBA=('/address')
+BEBAA=('/')
+BEBB=('/withdraw')
+BEBBPO1=('currency=')
+BEBBPO2=('amount=')
+BEBBPO3=('address=')
+BEBBPO4=('paymentId=') #optional
+BEBBPO5=('networkFee=') #optional
+BEBBPO6=('includeFee=true' 'includeFee=false') #default false
+BEBBPO7=('autoCommit=true' 'autoCommit=false') #default true
+BEBBA=('/') #Put and Delete , no param
+BEC=('/transfer')
+BECPO1=('currency=')
+BECPO2=('amount=')
+BECPO3=('type=bankToExchange type=exchangeToBank')
+BED=('/transactions')
+BEDP1=('currency=')
+BEDP2=('sort=DESC' 'sort=ASC')
+BEDP3=('by=timestamp' 'by=index')
+BEDP4=('from=')
+BEDP5=('till=')
+BEDP6=('limit=')
+BEDP7=('offset=')
+BEDA=('/')
+BEDAP1=('currency=')
+BEDAP2=('sort=DESC' 'sort=ASC')
+BEDAP3=('by=timestamp' 'by=index')
+BEDAP4=('from=')
+BEDAP5=('till=')
+BEDAP6=('limit=')
+BEDAP7=('offset=')
+
+################################################################################
+# GDAX EXCHANGE VARIABLES                                                      #
+# Exchange URL: https://www.gdax.com/                                          #
+# API documentation: https://api.gdax.com                                      #
+################################################################################
+
+C=('api.gdax.com')
+CA=('/accounts')
+CAA=('/')
+CAAA=('/ledger')
+CAAB=('/holds')
+CB=('/orders')
+CBP1=('status=')
+CBP2=('product_id=') #optional
+CBPD1=('product_id=') #optional
+CBPO1=('client_oid=') #optional
+CBPO2=('type=limit' 'type=market') #optional
+CBPO2A=('price=') #for limit order
+CBPO2B=('size=') #for both limit and market order
+CBPO2C=('time_in_force=GTC' 'time_in_force=GTT' 'time_in_force=IOC' 'time_in_force=FOK') #optional
+CBPO2CA=('cancel_after=') #optional. requires time_in_force = GTT
+CBPO2CB=('post_only=') #optional, requires time_in_force = GTT or GTC
+CBPO2D=('funds=') #for market order only, either funds or size required.
+CBPO3=('side=buy' 'side=sell')
+CBPO4=('product_id=')
+CBPO5=('stp=dc' 'stp=co' 'stp=cn' 'stp=cb') #optional
+CBPO6=('stop=loss' 'stop=entry') 
+CBPO6A=('stop_price=') 
+CBA=('/')
+CC=('/fills')
+CCP1=('order_id=')
+CCP2=('product_id=')
+CD=('/deposits')
+CDA=('/payment-method')
+CDAPO1=('amount=')
+CDAPO2=('currency=')
+CDAPO3=('payment_method_id=')
+CDB=('/coinbase-account')
+CDBPO1=('amount=')
+CDBPO2=('currency=')
+CDBPO3=('coinbase_account_id=')
+CE=('/withdrawals')
+CEA=('/payment-method')
+CEAPO1=('amount=')
+CEAPO2=('currency=')
+CEAPO3=('payment_method_id=')
+CEB=('/coinbase-account')
+CEBPO1=('amount=')
+CEBPO2=('currency=')
+CEBPO3=('coinbase_account_id=')
+CEC=('/crypto')
+CECPO1=('amount=')
+CECPO2=('currency=')
+CECPO3=('crypto_address=')
+CF=('/payment-methods')
+CG=('/coinbase-accounts')
+CH=('/reports')
+CHPO1=('type=fills' 'type=account')
+CHPO1A=('product_id=')
+CHPO1B=('account_id=')
+CHPO2=('start_date=')
+CHPO3=('end_date=')
+CHPO4=('format=pdf' 'format=csv')
+CHPO5=('email=') #optional
+CHA=('/')
+CI=('/users')
+CIA=('/self')
+CIAA=('/trailing-volume')
+CJ=('/products')
+CJA=('/')
+CJAA=('/book')
+CJAAP1=('level=')
+CJAB=('/ticker')
+CJAC=('/trades')
+CJAD=('/candles')
+CJADP1=('start=')
+CJADP2=('end=')
+CJADP3=('granularity=60' 'granularity=300' 'granularity=900' 'granularity=3600' 'granularity=21600' 'granularity=86400') 
+CJAE=('/stats')
+CK=('/currencies')
+CL=('/time')
+
+################################################################################
+# POLONIEX EXCHANGE VARIABLES                                                  #
+# Exchange URL: https://poloniex.com                                           #
+# API Docs: https://poloniex.com                                               #
+################################################################################
+
+D=('poloniex.com')
+DA=('/public')
+DAP1=('command=returnTicker')
+DAP2=('command=return24Volume')
+DAP3=('command=returnOrderBook')
+DAP3A=('currencyPair=')
+DAP3B=('depth=')
+DAP4=('command=returnTradeHistory')
+DAP4A=('currencyPair=')
+DAP4B=('start=')
+DAP4C=('end=')
+DAP5=('command=returnChartData')
+DAP5A=('currencyPair=')
+DAP5B=('period=300' 'period=900' 'period=1800' 'period=7200' 'period=14400' 'period=86400') 
+DAP5C=('start=')
+DAP5D=('end=')
+DAP6=('command=returnCurrencies')
+DAP7=('command=returnLoanOrders')
+DAP7A=('currency=')
+DB=('/tradingApi')
+DBPO1=('command=returnBalance')
+DBPO2=('command=returnCompleteBalances')
+DBPO2A=('account=')
+DBPO3=('command=returnDepositAddresses')
+DBPO4=('command=generateNewAddress')
+DBPO4A=('currency=')
+DBPO5=('command=returnDepositsWithdrawals')
+DBPO5A=('start=')
+DBPO5B=('end=')
+DBPO6=('command=returnOpenOrders')
+DBPO6A=('currencyPair=')
+DBPO7=('command=returnTradeHistory')
+DBPO7A=('currencyPair=')
+DBPO7B=('start=') #optional
+DBPO7C=('end=') #optional
+DBPO7D=('limit=') #optional
+DBPO8=('command=returnOrderTrades')
+DBPO8A=('orderNumber=')
+DBPO9=('command=buy')
+DBPO9A=('currencyPair=')
+DBPO9B=('rate=')
+DBPO9C=('amount=')
+DBPO9D=('fillOrKill=1') #optional
+DBPO9E=('immediateOrCancel=1') #optional
+DBPO9F=('postOnly=1') #optional
+DBPO10=('command=sell')
+DBPO10A=('currencyPair=')
+DBPO10B=('rate=')
+DBPO10C=('amount=')
+DBPO10D=('fillOrKill=1') #optional
+DBPO10E=('immediateOrCancel=1') #optional
+DBPO10F=('postOnly=1') #optional
+DBPO11=('command=cancelOrder')
+DBPO11A=('orderNumber=')
+DBPO12=('command=moveOrder')
+DBPO12A=('orderNumber=')
+DBPO12B=('rate=')
+DBPO12C=('amount=') #optional
+DBPO12D=('immediateOrCancel=1') #optional
+DBPO12E=('postOnly=1') #optional
+DBPO13=('command=withdraw')
+DBPO13A=('currency=')
+DBPO13B=('amount=')
+DBPO13C=('address=')
+DBPO13D=('paymentId=') #optional
+DBPO14=('command=returnFeeInfo')
+DBPO15=('command=returnAvailableAccountBalances')
+DBPO15A=('account=') #optional
+DBPO16=('command=returnTradableBalances')
+DBPO17=('command=transferBalance')
+DBPO17A=('currency=')
+DBPO17B=('amount=')
+DBPO17C=('fromAccount=')
+DBPO17D=('toAccount=')
+DBPO18=('command=returnMarginAccountSummary')
+DBPO19=('command=marginBuy')
+DBPO19A=('currencyPair=')
+DBPO19B=('rate=')
+DBPO19C=('amount=')
+DBPO19D=('lendingRate=')
+DBPO20=('command=marginSell')
+DBPO20A=('currencyPair=')
+DBPO20B=('rate=')
+DBPO20C=('amount=')
+DBPO20D=('lendingRate=')
+DBPO21=('command=getMarginPosition')
+DBPO21A=('currencyPair=')
+DBPO22=('command=closeMarginPosition')
+DBPO22A=('currencyPair=')
+DBPO23=('command=createLoanOffer')
+DBPO23A=('currency=')
+DBPO23B=('amount=')
+DBPO23C=('duration=')
+DBPO23D=('autoRenew=1' 'autoRenew=0')
+DBPO23E=('lendingRate=')
+DBPO24=('command=cancelLoanOffer')
+DBPO24A=('orderNumber=')
+DBPO25=('command=returnOpenLoanOffers')
+DBPO26=('command=returnActiveLoans')
+DBPO27=('command=returnLendingHistory')
+DBPO27A=('start=')
+DBPO27B=('end=')
+DBPO27C=('limit=') #optional
+DBPO28=('command=toggleAutoRenew')
+DBPO28A=('orderNumber=')
+
+################################################################################
+# BINANCE EXCHANGE VARIABLES                                                   #
+# Exchange URL: https://binance.com                                            #
+# API Docs: https://github.com/binance-exchange/binance-official-api-docs      #
+################################################################################
+
+E=('api.binance.com/api')
+EA=('/order') #v3
+EAP1=('symbol=')
+EAP2=('orderId=') #optional
+EAP3=('origClientOrderId=') #optional EAP2 EAP3 must choose one
+EAP4=('recvWindow=') #optional
+EAP5=('timestamp=')
+EAPO1=('symbol=')
+EAPO2=('side=BUY' 'side=SELL')
+EAPO3=('type=')
+EAPO4=('timeInForce=GTC' 'timeInForce=IOC' 'timeInForce=FOK')
+EAPO5=('quantity=')
+EAPO6=('price=')
+EAPO7=('newClientOrderId=')
+EAPO8=('recvWindow=')
+EAPO9=('timestamp=') 
+EAPD1=('symbol=')
+EAPD2=('orderId=') #optional
+EAPD3=('origClientOrderId=') #optional
+EAPD4=('newlientOrderId=') #optional
+EAPD5=('recvWindow=') #optional
+EAPD6=('timestamp=')
+EAA=('/test') #v3
+EAAPO1=('symbol=')
+EAAPO2=('side=BUY' 'side=SELL')
+EAAPO3=('timeInForce=GTC' 'timeInForce=IOC' 'timeInForce=FOK')
+EAAPO4=('quantity=')
+EAAPO5=('price=')
+EAAPO6=('recvWindow=')
+EAAPO7=('timestamp=') 
+EB=('/ticker') 
+EBA=('/price') #v3
+EBAP1=('symbol=')
+EBB=('/bookTicker') #v3
+EBBP1=('symbol=')
+EBC=('/allPrices') 
+EBD=('/allBookTickers')
+EBE=('/24hr')
+EBEP1=('symbol=')
+EC=('/ping')
+ED=('/exchangeInfo')
+EE=('/time')
+EF=('/depth')
+EFP1=('symbol=')
+EFP2=('limit=') #optional
+EG=('/trades')
+EGP1=('symbol=')
+EGP2=('limit=') #optional
+EH=('/historicalTrades')
+EHP1=('symbol=')
+EHP2=('limit=') #optional
+EHP3=('fromId=') #optional
+EI=('/aggTrades') 
+EIP1=('symbol=') 
+EIP2=('fromId=') #optional
+EIP3=('startTime=') #optional
+EIP4=('endTime=')  #optional
+EIP5=('limit=') #optional
+EJ=('/klines')
+EJP1=('symbol=')
+EJP2=('interval=')
+EJP3=('limit=')
+EK=('/openOrders') #v3
+EKPD1=('symbol=') #optional
+EKPD2=('recvWindow=') #optional
+EKPD3=('timestamp=')
+EL=('/allOrders') #v3
+ELP1=('symbol=')
+ELP2=('orderId=') #optional
+ELP3=('limit=') #optional
+ELP4=('recvWindow=') #optional
+ELP5=('timestap=')
+EM=('/account') #v3
+EMP1=('recvWindow=') #optional
+EMP2=('timestamp=') 
+EN=('/myTrades') #v3
+ENP1=('symbol=') 
+ENP2=('limit=') #optional
+ENP3=('fromId=') #optional
+ENP4=('recvWindow=') #optional
+ENP5=('timestamp=')
+
+################################################################################
+# KRAKEN EXCHANGE VARIABLES                                                    #
+# Exchange URL: https://www.kraken.com                                         #
+# API Docs: https://www.kraken.com/help/api                                    #
+################################################################################
+
+F=('api.kraken.com')
+FA=('/piblic')
+FAA=('/Time')
+FAB=('/Assets')
+FABP1=('info=info')  #optional
+FABP2=('aclass=currency')  #optional
+FABP3=('asset=')  #optional
+FAC=('/AssetPairs') 
+FACP1=('info=info' 'info=leverage' 'info=fees' 'info=margin') #optional
+FACP2=('pair=') #optional
+FAD=('/Ticker')
+FADP1=('pair=')
+FAE=('/OHLC')
+FAEP1=('pair=')
+FAEP2=('interval=') #optional
+FAEP3=('since=1' 'since=5' 'since=15' 'since=30' 'since=60' 'since=240' 'since=1440' 'since=10080' 'since=21600') #optional
+FAF=('/Depth')
+FAFP1=('pair=')
+FAFP2=('count=') #optional
+FAG=('/Trades')
+FAGP1=('pair=')
+FAGP2=('since=') #optional
+FAH=('/Spread')
+FAHP1=('pair=')
+FAHP2=('since=') #optional
+FB=('/private')
+FBA=('/Balance')
+FBB=('/TradeBalance')
+FBBP1=('aclass=currency')  #optional
+FBBP2=('asset=')
+FBC=('/OpenOrders')
+FBCP1=('trades=true' 'trades=false')
+FBCP2=('userref=') #optional
+FBD=('/ClosedOrders')
+FBDP1=('trades=true' 'trades=false') #optional
+FBDP2=('userref=') #optional
+FBDP3=('start=') #optional
+FBDP4=('end=') #optional
+FBDP5=('ofs=')
+FBDP6=('closetime=open' 'closetime=close' 'closetime=both') #optional
+FBE=('/QueryOrders')
+FBEP1=('trades=true' 'trades=false') #optional
+FBEP2=('userref=') #optional
+FBEP3=('txid=')
+FBF=('/TradesHistory')
+FBFP1=('type=all' 'type=any position' 'type=closed position' 'type=no position') #optional
+FBFP2=('trades=true' 'trades=false') #optional
+FBFP3=('start=') #optional
+FBFP4=('end=') #optional
+FBFP5=('ofs')
+FBG=('/QueryTrades')
+FBGP1=('txid=')
+FBGP2=('trades=true' 'trades=false') #optional
+FBH=('/OpenPositions')
+FBHP1=('txid=')
+FBHP2=('docalcs=true' 'docalcs=false')
+FBI=('/Ledgers')
+FBIP1=('aclass=currency') #optional
+FBIP2=('asset=') #optional
+FBIP3=('type=all' 'type=deposit' 'type=withdrawal' 'type=trade' 'type=margin') #optional
+FBIP4=('start=') #optional
+FBIP5=('end=') #optional
+FBIP6=('ofs=')
+FBJ=('/QueryLedgers')
+FBJP1=('id=')
+FBK=('/TradeVolume')
+FBKP1=('pair=') #optional
+FBKP2=('fee-info=') #optional
+FBL=('/AddOrder')
+FBLP1=('pair=')
+FBLP2=('type=buy' 'type=sell')
+FBLP3=('ordertype=market' 'ordertype=limit' 'ordertype=stop-loss' 'ordertype=take-profit' 'ordertype=stop-loss-profit' 'ordertype=stop-loss-profit-limit' 'ordertype=stop-loss-limit' 'ordertype=take-profit-limit' 'ordertype=trailing-stop' 'ordertype=trailing-stop-limit' 'ordertype=stop-loss-and-limit' 'ordertype=settle-position') #
+FBLP4=('price=') #optional
+FBLP5=('price2=') #optional
+FBLP6=('volume=')
+FBLP7=('leverage=') #optional
+FBLP8=('oflags=viqc' 'oflags=fcib' 'oflags=fciq' 'oflags=nompp' 'oflags=post') #optional
+FBLP9=('starttm=') #optional
+FBLP10=('expiretm=') #optional
+FBLP11=('userref=') #optional
+FBLP12=('validate=') #optional
+FBM=('/CancelOrder')
+FBMP1=('txid=')
+FBN=('/DepositMethods')
+FBNP1=('aclass=currency') #optional
+FBNP2=('asset=')
+FBO=('/DepositAddresses')
+FBOP1=('aclass=currency') #optional
+FBOP2=('asset=')
+FBOP3=('method=')
+FBOP4=('new=true' 'new=false')
+FBP=('/DepositStatus')
+FBPP1=('aclass=currency') #optional
+FBPP2=('asset=')
+FBPP3=('method=')
+FBQ=('/WithdrawInfo')
+FBQP1=('aclass=currency') #optional
+FBQP2=('asset=')
+FBQP3=('key=')
+FBQP4=('amount=')
+FBR=('/Withdraw')
+FBRP1=('aclass=currency') #optional
+FBRP2=('asset=')
+FBRP3=('key=')
+FBRP4=('amount=')
+FBS=('/WithdrawStatus')
+FBSP1=('aclass=currency') #optional
+FBSP2=('asset=')
+FBSP3=('method=')
+FBT=('/WithdrawCancel')
+FBTP1=('aclass=currency') #optional
+FBTP2=('asset=')
+FBTP3=('refid=')
+
+################################################################################
+# WAVES NODE REST API                                                          #
+# Localhost:                                                                   #
+# API Docs:                                                                    #
+################################################################################
+
+G=('')
+GA=('/addresses')
+GAA=('/seq')
+GAAA=('/')
+GAAAA=('/')
+GAB=('/balance')
+GABA=('/')
+GABAA=('/')
+GB=('/assets')
+GBA=('/balance')
+GBAA=('/')
+GBAAA=('/')
+GBB=('/broadcast')
+GBBA=('/issue')
+GBBAPO1=('name=')
+GBBAPO2=('description=')
+GBBAPO3=('sender=')
+GBBAPO4=('senderPublicKey=')
+GBBAPO5=('fee=')
+GBBAPO6=('decimals=')
+GBBAPO7=('quantity=')
+GBBAPO8=('reissuable=true' 'reissuable=false')
+GBBAPO9=('signature=')
+GBBB=('/reissue')
+GBBBPO1=('assetId=')
+GBBBPO2=('senderPublicKey=')
+GBBBPO3=('fee=')
+GBBBPO4=('quantity=')
+GBBBPO5=('reissuable=true' 'reissuable=false')
+GBBBPO6=('timestamp=')
+GBBBPO7=('signature=')
+GBBC=('/burn')
+GBBCPO1=('assetId=') 
+GBBCPO2=('senderPublicKey=')
+GBBCPO3=('fee=')
+GBBCPO4=('quantity=')
+GBBCPO5=('timestamp=')
+GBBCPO6=('signature=')
+GBBD=('/transfer')
+GBBDPO1=('assetId=') #optional
+GBBDPO2=('senderPublicKey=')
+GBBDPO3=('recipient=')
+GBBDPO4=('fee=')
+GBBDPO5=('feeAssetId=') #optional
+GBBDPO6=('amount=')
+GBBDPO7=('attachment=')
+GBBDPO8=('timestamp=')
+GBBDPO9=('signature=')
+GBBE=('/batch-transfer')
+GBBEPO1=('') #JSON object
+GBBEPO1A=('assetId=') #optional
+GBBEPO1B=('senderPublicKey=')
+GBBEPO1C=('recipient=')
+GBBEPO1D=('fee=')
+GBBEPO1E=('feeAssetId') #optional
+GBBEPO1F=('amount=') 
+GBBEPO1G=('attachment=')
+GBBEPO1H=('timestamp=')
+GBBEPO1I=('signature=')
+GBC=('/issue')
+GBCPO1=('name=')
+GBCPO2=('description=')
+GBCPO3=('senderPublicKey=')
+GBCPO4=('fee=')
+GBCPO5=('decimals=')
+GBCPO6=('quantity=')
+GBCPO7=('reissuable=true' 'reissuable=false')
+GBCPO8=('timestamp=')
+GBCPO9=('signature=')
+GBCP10=('sender=')
+GBD=('/reissue')
+GBDPO1=('assetId=')
+GBDPO2=('senderPublicKey=')
+GBDPO3=('fee=')
+GBDPO4=('quantity=')
+GBDPO5=('reissuable=true' 'reissuable=false')
+GBDPO6=('timestamp=')
+GBDPO7=('signature=')
+GBDPO8=('sender=')
+GBE=('/burn')
+GBEPO1=('assetId=')
+GBEPO2=('sender=')
+GBEPO3=('fee=')
+GBEPO4=('amount=')
+GBF=('/transfer')
+GBFPO1=('assetId=') #optional
+GBFPO2=('senderPublicKey')
+GBFPO3=('recipient=')
+GBFPO4=('fee=')
+GBFPO5=('feeAssetId=') #optional
+GBFPO6=('amount=')
+GBFPO7=('attachment=')
+GBFPO8=('timestamp=')
+GBFPO9=('signature=') 
+GBFPO10=('sender=')
+GBG=('/masstransfer')
+GBGPO1=('sender=')
+GBGPO2=('assetId=')
+GBGPO3=('transfers=') #list of pairs (recipient, amount)
+GBGPO4=('fee=')
+GBGPO5=('attachment=')
+GBH=('/make-asset-name-unique')
+GBHPO1=('assetId=')
+GBHPO2=('sender=')
+GBHPO3=('fee=')
+GBHPO4=('networkByte=')
+GC=('/leasing') #leasing transactions
+GCA=('/lease')
+GCAPO1=('sender=')
+GCAPO2=('fee=')
+GCAPO3=('amount=')
+GCB=('/cancel')
+GCBPO1=('sender=')
+GCBPO2=('fee=')
+GCBPO3=('leaseId=')
+GCC=('/broadcast')
+GCCA=('/lease')
+GCCAPO1=('senderPublicKey=')
+GCCAPO2=('fee=')
+GCCAPO3=('amount=')
+GCCAPO4=('timestamp=')
+GCCAPO5=('signature=')
+GCCB=('/cancel')
+GCCBPO1=('senderPublicKey=')
+GCCBPO2=('fee=')
+GCCBPO3=('txId=')
+GCCBPO4=('timestamp=')
+GCCBPO5=('signature=')
+GD=('/alias')
+GDA=('/broadcast')
+GDAA=('/create')
+GDAAPO1=('senderPublicKey=')
+GDAAPO2=('fee=')
+GDAAPO3=('alias=')
+GDAAPO4=('timestamp=')
+GDAAPO5=('signature=')
+GDB=('/create')
+GDBPO1=('sender=')
+GDBPO2=('fee=')
+GDBPO3=('alias=')
+GDC=('/by-alias')
+GDCA=('/')
+GDD=('/by-address')
+GDDA=('/')
+GE=('/transactions')
+GEA=('/info')
+GEAA=('/')
+GEB=('/address')
+GEBA=('/')
+GEBAA=('/limit')
+GEBAAA=('/')
+GEC=('/unconfirmed')
+GED=('/sign')
+GEDPO1=('type=3' 'type=4' 'type=5' 'type=6' 'type=8' 'type=9' 'type=10')
+GEDPO2=('timestamp=') #optional
+GEE=('/broadcast')
+GEEPO1=('type=3' 'type=4' 'type=5' 'type=6' 'type=8' 'type=9' 'type=10')
+GF=('/peers')
+GFA=('/connect')
+GFB=('/connected')
+GFC=('/blacklisted')
+GFD=('/all')
+GG=('/blocks')
+GGA=('/height')
+GGB=('/last')
+GGC=('/at')
+GGCA=('/')
+GGD=('/seq')
+GGDA=('/')
+GGDAA=('/')
+GGE=('/signature')
+GGEA=('/')
+GGF=('/address')
+GGFA=('/')
+GGFAA=('/')
+GGFAAA=('/')
+GH=('/utils')
+GHA=('/hash')
+GHAA=('/secure')
+GHAB=('/fast')
+GHB=('/seed')
+GHBA=('/')
