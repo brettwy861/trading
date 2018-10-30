@@ -49,3 +49,16 @@ with open('price_coinbase_sorted.json','r') as f:
     priceDict  = json.load(f)
 
 
+## plot 
+import datetime as dt
+import matplotlib.pyplot as plt
+seg = range(1,len(priceDict))
+t = list(priceDict.keys())
+p = list(priceDict.values())
+x = [dt.datetime.strptime(d,'%Y%m%d%H%M') for d in t]
+x = x[seg[0]:seg[-1]]
+y = p[seg[0]:seg[-1]]
+plt.rcParams["figure.figsize"] = [16,9]
+plt.plot(x, y)
+## plot end
+
