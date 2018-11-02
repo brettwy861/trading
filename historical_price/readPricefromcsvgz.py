@@ -36,24 +36,29 @@ time.sleep(3)
 data = pd.read_csv('coinbaseUSD.csv.gz', compression='gzip', error_bad_lines=False)
 
 firstrow = list(data.keys())
-timestamp = list(data[firstrow[0]])
-priceUSD = list(data[firstrow[1]])
-volume = list(data[firstrow[2]])
+Unixtimestamp = data[firstrow[0]]
+priceUSD = data[firstrow[1]]
+volume = data[firstrow[2]]
 
 dic={}
 vol={}
 #convert timestamp unix to date time string
-for idx,item in enumerate(timestamp):
-    timestamp[idx]=unixTimeConversion(item)
+
+#timestamp = [unixTimeConversion(item) for item in Unixtimestamp]
+timestamp = []
+for value in (unixTimeConversion(item) for item in Unixtimestamp):
+    timestamp.append(value)
 
 #init the dict
 dic = dict().fromkeys(timestamp,0)
 vol = dict().fromkeys(timestamp,0)
 
 #get all traded usd for every minute
+
 for idx,dateTime in enumerate(timestamp):
     dic[dateTime]+=(priceUSD[idx]*volume[idx]) 
     vol[dateTime]+=volume[idx]
+
 
 #get average BTC price for every minute
 for dateTime in dic.keys():
