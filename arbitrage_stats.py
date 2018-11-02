@@ -70,6 +70,7 @@ def compareFeecurrency(feeCurrency):
     last = feeCurrency.difference(feeDict.keys()).pop()
     feeDict[last]=0
     feeDict['GUSD']=0
+    feeDict['DAI']=0
     feeDict['EURS']=feeDict['USD']+1
     feeDict['EOS']=feeDict['ETH']+1
     return feeDict
@@ -103,16 +104,16 @@ def getPricePoints():
         dic[item['symbol']]={}
         dic[item['symbol']]['ask']=item['ask']
         dic[item['symbol']]['bid']=item['bid']
-    dic['EBTCBTC']=dic['EBTCNEWBTC']
-    dic['EBTCETH']=dic['EBTCNEWETH']
-    dic['EBTCUSD']=dic['EBTCNEWUSD']
+    #dic['EBTCBTC']=dic['EBTCNEWBTC']
+    #dic['EBTCETH']=dic['EBTCNEWETH']
+    #dic['EBTCUSD']=dic['EBTCNEWUSD']
     dic['XRPUSD']=dic['XRPUSDT']
     dic['SBTCUSD']=dic['SBTCUSDT']
     dic['EMCUSD']=dic['EMCUSDT']
     dic['DRTUSD']=dic['DRTUSDT']
     dic['REPUSD']=dic['REPUSDT']
     dic['AVHUSD']=dic['AVHUSDT']
-    dic['CLOUTUSD']=dic['CLOUTUSDT']
+    #dic['CLOUTUSD']=dic['CLOUTUSDT']
     dic['EKOUSD']=dic['EKOUSDT']
     dic['BCPTUSD']=dic['BCPTUSDT']
     dic['FRECUSD']=dic['FRECUSDT']
