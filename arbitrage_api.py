@@ -1,9 +1,11 @@
 import requests
 import datetime
 import decimal
+
 def fetch_all_currencies():
     url_currency = 'https://api.hitbtc.com/api/2/public/currency/'
     return requests.get(url_currency).json()
+
 def fetch_currency(currency):
     url_currency = 'https://api.hitbtc.com/api/2/public/currency/'
     return requests.get(url_currency+currency).json()
@@ -24,7 +26,6 @@ def fetch_all_tickers():
 def fetch_ticker(ticker):
     url = 'https://api.hitbtc.com/api/2/public/ticker/'
     return requests.get(url+ticker).json()
-        tmp = symbol.split(' ')
 
 def fetch_all_symbols():
     url_symbol = 'https://api.hitbtc.com/api/2/public/symbol/'
@@ -59,3 +60,10 @@ def get_arbitrage_profit(token):
     Yb = fetch_ticker(token+'ETH')['bid']
     Zb = fetch_ticker('ETHBTC')['bid']
     return float(decimal.Decimal(Yb)*decimal.Decimal(Zb)/decimal.Decimal(Xa))
+
+def main():
+    print('there\'s nothing here')
+    
+    
+if __name__ == '__main__':
+    main()

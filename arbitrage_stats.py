@@ -8,6 +8,7 @@ import os
 import time
 import base64
 
+# get the time 24 hours ago
 def get24hourAgo():
     t=time.gmtime(int(time.time())-3600*24)
     year = str(t.tm_year)
@@ -28,16 +29,22 @@ def get24hourAgo():
         second = '0'+second
     return year+month+day+hour+minute 
 
+# get all currency name in the exchange
 def getAllID():
     currency = arb.fetch_all_currencies()
     tokens = [item['id'] for item in currency]
     tokens.sort()
     return tokens
-def getFeecurrency():#get all fee currency
+
+#get all fee currency
+def getFeecurrency():
     symbol = arb.fetch_all_symbols()
     feeCurrency = set([item['feeCurrency'] for item in symbol])
     return feeCurrency
-def getPairs(tri_only=True): #get all pairs. tri_only set to false, when all pairs needed. otherwise only pairs that can form triangle.
+
+#get pairs and quantityIncrement as well as ticksize.
+#tri_only set to false, when all pairs needed. otherwise only pairs that can form triangle.
+def getPairs(tri_only=True): 
     symbol = arb.fetch_all_symbols()
     precision = {}
     pairs = {}
@@ -53,7 +60,8 @@ def getPairs(tri_only=True): #get all pairs. tri_only set to false, when all pai
             pairs.pop(keyToRemove.pop())
     return pairs, precision		
 
-def compareFeecurrency(feeCurrency):#compare fee currency priority
+#compare fee currency priority, eg. USDT > BTC > ETH 
+def compareFeecurrency(feeCurrency):
     d = getPairs(False)[0]
     feeDict ={}
     result = [[k,d[k]] for k,v in d.items() if k in feeCurrency]
@@ -61,9 +69,13 @@ def compareFeecurrency(feeCurrency):#compare fee currency priority
         feeDict[item[0]]=len(item[1])
     last = feeCurrency.difference(feeDict.keys()).pop()
     feeDict[last]=0
+    feeDict['GUSD']=0
+    feeDict['EURS']=feeDict['USD']+1
+    feeDict['EOS']=feeDict['ETH']+1
     return feeDict
 
-def getTriangles_v2(feeCurrency):#edge notation
+# edge notation of all BTC-included Triangle
+def getTriangles_v2(feeCurrency):
     pairs, precision = getPairs()
     feePriority = compareFeecurrency(feeCurrency)
     btcPriority = feePriority['BTC']
@@ -82,6 +94,8 @@ def getTriangles_v2(feeCurrency):#edge notation
                     print('error')
                     return 0
     return tri, precision
+
+#dirty data clean in hitbtc
 def getPricePoints():
     allTickers = arb.fetch_all_tickers()
     dic = {}
@@ -107,15 +121,21 @@ def getPricePoints():
     dic['BCHDAI']=dic['BCCFDAI']
     dic['BCHEURS']=dic['BCCFEURS']
     return dic
+
 feeCurrency = getFeecurrency()
-#triangles = getTriangles(feeCurrency)
 triangles_v2, precision = getTriangles_v2(feeCurrency)
+
+# List all pairs that are in the triangle above, along with QuantityIncrement, tickSize
 d = {}
 for item in triangles_v2:
     a,b,c=item.split('-')
     d[item]={a:precision[a],b:precision[b],c:precision[c]}
+    
+# Maintain a json for the data above    
 with open(os.path.join('/var/www/html/','precision.json'),'w') as f:
     json.dump(d, f, indent=2)
+
+# maintain the triangle qI and tS
 with open(os.path.join('/var/www/html/','hitbtc-triangles-result.txt'),'w') as g:
     for k,v in d.items():
         tmp = k.split('-')
@@ -123,7 +143,8 @@ with open(os.path.join('/var/www/html/','hitbtc-triangles-result.txt'),'w') as g
                 +tmp[1]+'-'+v[tmp[1]]['quantityIncrement']+'-'+v[tmp[1]]['tickSize']+'-'
                 +tmp[2]+'-'+v[tmp[2]]['quantityIncrement']+'-'+v[tmp[2]]['tickSize']+'\n')
 
-def v2e(v):#convert from virtex to edge notation
+#convert from virtex to edge notation
+def v2e(v):
     BC=v.split('-')[0]
     Q1=v.split('-')[1]
     Q2=v.split('-')[2]
