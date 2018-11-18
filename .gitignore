@@ -3,3 +3,4 @@ historical_price/.DS_Store
 historical_price/price_coinbase_sorted.json
 *.gz
 backtest/.DS_Store
+*.pyc
