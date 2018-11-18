@@ -56,18 +56,26 @@ def plotOpenWithVolume(df,windowSize):
     ax2.set_ylabel('24-Hour Volume', color='r')
     plt.show()
     
-def plotMultiTs(df,windowSize):
-    newFrame = df.rolling(windowSize).mean()
-    # Daily Open + Volume plot for one cryptocurrency during specific date range
-    ax = newFrame.plot(x=newFrame.index, y=newFrame.columns[0], legend=False, color="b",logy=False)
-    ax2 = ax.twinx()
-    newFrame.plot(x=newFrame.index, y=newFrame.columns[1], ax=ax2, legend=False, color="r",logy=False)
-    ax.figure.legend(loc=9)
-    ax.set_xlabel('Dates')
-    ax.set_ylabel('Price(USD) of '+ newFrame.columns[0], color='b')
-    ax2.set_ylabel('Price(USD) of '+ newFrame.columns[1], color='r')
-    plt.show()
-
+def plotMultiTs(df,windowSize):#support one ts or df made of two ts
+    if type(df) == pd.core.frame.DataFrame and len(df.columns)>1:
+        newFrame = df.rolling(windowSize).mean()
+        # Daily Open + Volume plot for one cryptocurrency during specific date range
+        ax = newFrame.plot(x=newFrame.index, y=newFrame.columns[0], legend=False, color="b",logy=False)
+        ax2 = ax.twinx()
+        newFrame.plot(x=newFrame.index, y=newFrame.columns[1], ax=ax2, legend=False, color="r",logy=False)
+        ax.figure.legend(loc=9)
+        ax.set_xlabel('Dates')
+        ax.set_ylabel('Price(USD) of '+ newFrame.columns[0], color='b')
+        ax2.set_ylabel('Price(USD) of '+ newFrame.columns[1], color='r')
+        plt.show()
+    elif type(df) == pd.core.series.Series:
+        newTs = df.rolling(windowSize).mean()
+        ax = newTs.plot(x=newTs.index, y=newTs.data, legend=False, color="b",logy=False)
+        ax.figure.legend(loc=9)
+        ax.set_xlabel('Dates')
+        ax.set_ylabel('Price(USD) of '+ newTs.name, color='b')
+        plt.show()
+        
 def main(argv):
     if len(sys.argv)!=5:
         print("Please follow the format: python thisscript.py 'ethereum' '20170101' '20171231' 5")

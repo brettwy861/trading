@@ -28,14 +28,16 @@ def find_cointegrated_pairs(dataframe):
             # record pairs and p-value
             pairs.append((keys[i], keys[j], pvalue))
     return pvalue_matrix, pairs
+   
 
 windowSize = 1
 coinList = ['bitcoin','ethereum','litecoin','ripple','waves','stellar']
 ts = {}
 for c in coinList:
-    ts[c] = cmc.getHistoricalData(c,20180101,20181115).Open
+    ts[c] = cmc.getHistoricalData(c,20170101,20181115).Open
     ts[c] = ts[c].rolling(windowSize).mean()
 df = pd.DataFrame(ts)
+#logdf = np.log(df)
 p_value, pairs = find_cointegrated_pairs(df)
 
 pair_dict = {}
@@ -50,3 +52,41 @@ MSPair = pd.concat([df[mostSignificantPair[0]],df[mostSignificantPair[1]]], axis
 LSPair = pd.concat([df[leastSignificantPair[0]],df[leastSignificantPair[1]]], axis=1)
 cmc.plotMultiTs(MSPair,1)
 cmc.plotMultiTs(LSPair,1)
+
+""" 
+# need to make sure both TS are the same order of integration before checking coint
+# check coint for logPrice, and Price 
+
+ts_test = df[mostSignificantPair[0]]
+result = sm.tsa.adfuller(ts_test, regression='nc')
+print('ADF Statistic: %f' % result[0])
+print('p-value: %f' % result[1])
+print('Critical Values:')
+for key, value in result[4].items():
+	print('\t%s: %.3f' % (key, value))
+
+ts_test = ts_test.diff()[1:]
+result = sm.tsa.adfuller(ts_test, regression='c')
+print('ADF Statistic: %f' % result[0])
+print('p-value: %f' % result[1])
+print('Critical Values:')
+for key, value in result[4].items():
+	print('\t%s: %.3f' % (key, value))
+
+
+ts_test = df[mostSignificantPair[1]]
+result = sm.tsa.adfuller(ts_test,regression='nc')
+print('ADF Statistic: %f' % result[0])
+print('p-value: %f' % result[1])
+print('Critical Values:')
+for key, value in result[4].items():
+	print('\t%s: %.3f' % (key, value))
+
+ts_test = ts_test.diff()[1:]
+result = sm.tsa.adfuller(ts_test, regression='c')
+print('ADF Statistic: %f' % result[0])
+print('p-value: %f' % result[1])
+print('Critical Values:')
+for key, value in result[4].items():
+	print('\t%s: %.3f' % (key, value))
+"""
